@@ -49,8 +49,13 @@ const productSchema = new mongoose.Schema({
     ],
 
     category: {
-        type: String,
+        type: mongoose.Schema.ObjectId,
         required: [true, 'Please Specified product category']
+    },
+
+    collection: {
+        type: mongoose.Schema.ObjectId,
+        required: false
     },
 
     images: [

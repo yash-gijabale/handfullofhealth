@@ -1,10 +1,10 @@
 const Product = require('../models/ProductModel')
 const Category = require('../models/categoryModel')
+const ProductCollection = require('../models/collectionModel')
 
 const catchAsyncError = require('../middleware/catchAsyncError')
 const ErrorHandler = require('../utils/ErrorHandler')
 const ApiFeature = require('../utils/ApiFeatures')
-const { query } = require('express')
 
 
 exports.createProduct = catchAsyncError(async (req, res, next) => {
@@ -187,13 +187,13 @@ exports.editCategory = catchAsyncError(async (req, res, next) => {
     const { categoryName, discription } = req.body
     const catId = req.params.id
 
-    const category = await Category.findById({_id: catId})
-    if(!category){
+    const category = await Category.findById({ _id: catId })
+    if (!category) {
         return next(new ErrorHandler('Category not found', 404))
     }
 
     category.categoryName = categoryName,
-    category.discription = discription
+        category.discription = discription
 
     await category.save()
 
@@ -201,5 +201,151 @@ exports.editCategory = catchAsyncError(async (req, res, next) => {
         success: true,
         message: 'Category updated suuccessfully',
         result: category
+    })
+})
+
+exports.categoryWiseProduct = catchAsyncError(async (req, res, next) => {
+
+    const id = req.body.id
+
+    const products = await Product.find({ category: id })
+
+    res.status(200).json({
+        success: true,
+        message: 'Products found',
+        result: products
+    })
+})
+
+
+exports.categoriesWithProduct = catchAsyncError(async (req, res, next) => {
+
+    const products = await Category.aggregate([
+        {
+            $lookup: {
+                from: 'products',
+                localField: '_id',
+                foreignField: 'category',
+                as: 'products'
+            }
+        }
+    ])
+
+    res.status(200).json({
+        success: true,
+        message: 'Category found',
+        result: products
+    })
+
+})
+
+// PRODUCT COLLECTION 
+
+exports.createCollectionProducts = catchAsyncError(async (req, res, next) => {
+
+    const { collectionName, title, thumbnail } = req.body
+
+    const productsId = req.body.products
+
+    let collection = {
+        collectionName,
+        title,
+        thumbnail,
+        products: productsId
+    }
+
+    const newCollection = await ProductCollection.create(collection)
+
+    if (!newCollection) {
+        return next(new ErrorHandler('Something is wrong', 400))
+    }
+
+    res.status(200).json({
+        success: true,
+        message: 'New collection is created!',
+        result: newCollection
+    })
+})
+
+
+exports.getAllCollections = catchAsyncError(async (req, res, next) => {
+
+    const collections = await ProductCollection.find()
+
+    if (!collections) {
+        return next(new ErrorHandler('Something is wrong', 400))
+    }
+    res.status(200).json({
+        result: collections
+    })
+})
+
+
+exports.getCollection = catchAsyncError(async (req, res, next) => {
+
+    const id = req.params.id
+
+    const collection = await ProductCollection.findById({ _id: id })
+    if (!collection) {
+        return next(new ErrorHandler('Collection not found', 404))
+    }
+
+    res.status(200).json({
+        success: true,
+        message: 'Collectionn found',
+        result: collection
+    })
+
+})
+
+exports.deleteCollection = catchAsyncError(async (req, res, next) => {
+    const id = req.params.id
+    const collection = await ProductCollection.findById({ _id: id })
+    if (!collection) {
+        return next(new ErrorHandler('Collection not found', 404))
+    }
+
+    await ProductCollection.deleteOne({ _id: id })
+
+    res.status(200).json({
+        success: true,
+        message: 'Collectionn Deleted',
+        result: []
+    })
+})
+
+exports.productWithCollection = catchAsyncError(async (req, res, next) => {
+
+    const collections = await ProductCollection.aggregate([
+        {
+            $lookup: {
+                from: 'products',
+                localField: '_id',
+                foreignField: 'collection',
+                as: 'products'
+            }
+        }
+    ])
+
+    res.status(200).json({
+        success: true,
+        result: collections
+    })
+})
+
+
+exports.collectionWiseProduct = catchAsyncError(async (req, res, next) => {
+
+    const collectionId = req.params.id
+
+    const collection = await ProductCollection.findById({ _id: collectionId })
+    const products = await Product.find({ collection: collectionId })
+
+    res.status(200).json({
+        success: true,
+        result: {
+            collection,
+            products
+        }
     })
 })

@@ -2,6 +2,7 @@ const catchAsyncError = require('../middleware/catchAsyncError')
 const ErrorHandler = require('../utils/ErrorHandler')
 const User = require('../models/userModel')
 const sentJwtToken = require('../utils/sendJwtToken')
+const Product = require('../models/ProductModel')
 
 exports.createUser = catchAsyncError(async (req, res, next) => {
     console.log(req.body)
@@ -108,6 +109,48 @@ exports.changePassword = catchAsyncError(async (req, res, next) => {
     })
 })
 
-exports.addProductToWishList = catchAsyncError(async () => {
+exports.addProductToWishList = catchAsyncError(async (req, res, next) => {
 
+    const productId = req.params.id
+    let user = req.user
+
+    const product = await Product.findById({ _id: productId })
+
+    let whishListItem = {
+        product: product._id,
+        name: product.name,
+        image: product.images[0].secure_url ? product.images[0].secure_url : '',
+        price: product.price
+    } 
+
+    user.wishList.push(whishListItem)
+
+    await user.save()
+
+    res.status(200).json({
+        success: true,
+        message: 'Product Added to your wishlist',
+        result: user.wishList
+    })
+
+})
+
+
+exports.removeFromWishlist = catchAsyncError( async(req, res, next) =>{
+    const productId = req.params.id;
+
+    let wishList = req.user.wishList
+
+    wishList = wishList.filter(item =>{
+        return item.product != productId
+    })
+
+    user = req.user
+    user.wishList = wishList
+    await user.save()
+    res.status(200).json({
+        success: true,
+        message: 'Wishlist updated',
+        result: user.wishList
+    })
 })

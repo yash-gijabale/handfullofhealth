@@ -8,7 +8,14 @@ const {
     newCategory, 
     getAllCategory,
     deleteCategory,
-    editCategory} = require('../controller/productController');
+    editCategory,
+    createCollectionProducts,
+    getAllCollections,
+    getCollection,
+    deleteCollection,
+    categoryWiseProduct,
+    productWithCollection,
+    collectionWiseProduct} = require('../controller/productController');
 const isAuthenticate = require('../middleware/isAuthenticate');
 const checkRole = require('../middleware/checkRole');
 
@@ -26,5 +33,17 @@ router.route('/newCategory').post(isAuthenticate, checkRole('admin') ,newCategor
 router.route('/categories').get(getAllCategory)
 router.route('/deleteCategory/:id').delete(isAuthenticate, checkRole('admin'), deleteCategory)
 router.route('/editCategory/:id').put(isAuthenticate, checkRole('admin'), editCategory)
+
+//COLLECTION ROUTES
+router.route('/newCollection').post(isAuthenticate, checkRole('admin'), createCollectionProducts)
+router.route('/allCollection').get(getAllCollections)
+router.route('/collection/:id').get(getCollection).delete(isAuthenticate, checkRole('admin'), deleteCollection)
+router.route('/productWithCollections').get(productWithCollection)
+router.route('/collectionWiseProduct/:id').get(collectionWiseProduct)
+
+
+router.route('/testcat').post(categoryWiseProduct)
+
+
 
 module.exports = router
