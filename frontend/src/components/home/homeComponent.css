@@ -158,6 +158,7 @@
 }
 
 
+.add-to-cart-mini,
 .best-seling-product-card .slide-info .info-2 .add-to-cart {
     width: 31px;
     height: 31px;
@@ -168,7 +169,282 @@
     transition: 0.2s all ease-in-out;
 }
 
-.best-seling-product-card .slide-info .info-2 .add-to-cart:hover {
+
+
+.best-seling-product-card .slide-info .info-2 .add-to-cart:hover,
+.add-to-cart-mini:hover {
     background-color: #ECCE75;
     cursor: pointer;
 }
+
+.new-arrival-slide-img-box {
+    width: 91%;
+    height: 55%;
+    margin: 10px auto;
+    background-color: #E0B787;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.new-arrival-slide-img-box img {
+    position: relative;
+    top: 20%;
+}
+
+
+
+
+/* COMBO CARD */
+.combo-section-card {
+    width: 320px;
+    height: 100%;
+    /* background-color: #E0B787; */
+}
+
+.combo-card-header {
+    width: 100%;
+    height: 25%;
+    background-color: #40A35B;
+    display: flex;
+    border-radius: 5px 5px 0 0;
+    border: 1px solid #40A35B;
+
+}
+
+.combo-card-header .combo-card-title,
+.combo-card-img {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.combo-card-header .combo-card-title h3 {
+    font-size: 25px;
+    font-weight: 600;
+    font-family: var(--montse);
+    line-height: 30px;
+    color: #E4F5DC;
+    width: 100%;
+    text-align: center;
+}
+
+.combo-card-header .combo-card-img .combo-card-img-bg {
+    width: 80%;
+    height: 89%;
+    border-radius: 100%;
+    background-color: #C5E8CA;
+    display: grid;
+    place-items: center;
+}
+
+.combo-card-img-bg img {
+    width: 60%;
+    height: 100%;
+}
+
+.combo-section-card .combo-card-body {
+    background-color: #ffffff;
+    border: 1px solid gainsboro;
+    border-radius: 0 0 5px 5px;
+    width: 100%;
+    height: 76%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.combo-section-card .combo-card-body::-webkit-scrollbar {
+    width: 5px;
+}
+
+.combo-section-card .combo-card-body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(255, 255, 255, 0); 
+    border-radius: 10px;
+}
+
+.combo-section-card .combo-card-body::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #eceeec;
+    width: 2px;
+}
+
+.combo-section-product-card {
+    width: 100%;
+    height: 125px;
+    /* background-color: red; */
+    display: flex;
+    padding-bottom: 5px;
+    margin: 10px 15px 0 10px;
+    transition: 0.2s all ease-in-out;
+    border-radius: 5px;
+}
+
+.combo-section-product-card:hover{
+    cursor: pointer;
+    background-color: #f2f2f2;
+}
+
+.combo-section-product-card-img {
+    width: 100%;
+    height: 95%;
+    margin: 5px;
+    background-color: #E6E6E6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.combo-section-product-card-img img {
+    width: 60%;
+    height: 100%;
+}
+
+.combo-section-product-card-info{
+    /* background-color: red; */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items:baseline;
+    justify-content: center;
+    margin-left: 5px;
+}
+
+.combo-section-product-card-info > span{
+    font-size: 13px;
+    font-family: var(--inter);
+    font-weight: 400px;
+    line-height: 16px;
+    /* background-color: #C5E8CA; */
+    margin-bottom: 1rem;
+    width: 90%;
+}
+
+.combo-section-product-card-info div{
+    display: flex;
+    align-items: center;
+    width: 90%;
+    /* margin: 0 auto ; */
+    /* height: 20%; */
+    /* background-color: #40A35B; */
+    justify-content: space-between;
+
+}
+
+.testmonial-card{
+    width: 294px;
+    height: 360px;
+    background-color: #B0DDDA;
+    border-radius: 10px;
+}
+.testimonial-card-header{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    /* background-color: red; */
+}
+.testimonial-card-user{
+    width: 30%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    /* background-color: #40A35B; */
+}
+.testimonial-card-user .user-avatar{
+    width: 63px;
+    height: 63px;
+    background-color: #e4e1e1;
+    border-radius: 100%;
+}
+.testimonial-card-info{
+    display: flex;
+    /* background-color: rebeccapurple; */
+    align-items: flex-end;
+    /* justify-content: flex-end; */
+    width: 70%;
+    height: 70%;
+    font-size: 15px;
+    font-family: var(--inter);
+    font-weight: 600;
+    line-height: 15px;
+}
+
+.testimonial-body{
+    width: 90%;
+    margin: auto;
+    font-size: 14px;
+    font-family: var(--inter);
+    font-weight: 400;
+    line-height: 21px;
+
+}
+
+.faq-card {
+    height: auto;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+.faq-question-box{
+    width: 100%;
+    height: 60px;
+    background-color: #D1EDC3;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.faq-question-box span{
+    font-size: 15px;
+    font-family: var(--inter);
+    line-height: 15px;
+    font-weight: 500;
+    margin: auto;
+}
+.faq-question-box .faq-icon{
+    margin-right: 2rem;
+    cursor: pointer;
+    width: 2%;
+}
+.faq-ans-box{
+    width: 100%;
+    height: auto;
+    padding-bottom: 1rem;
+    background-color: #E4F5DC;
+    border-radius: 0 0 10px 10px;
+    transition: 0.2s all ease-in-out;
+}
+.faq-ans{
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+.faq-ans span{
+    font-size: 13px;
+    font-family: var(--inter);
+    line-height: 15px;
+    font-weight: 400;
+    margin-left: 2rem;
+}
+.faq-disabled{
+    display: none;
+    position: relative;
+    top: -60px;
+}
+
+.faq-enable{
+    position: relative;
+    top: 0px;
+    
+
+    /* display: ; */
+}
+
+/* .faq-icon-roted{
+    transform: rotate(30deg);
+}
+.faq-icon-reverse{
+    transform: rotate(0deg);
+} */

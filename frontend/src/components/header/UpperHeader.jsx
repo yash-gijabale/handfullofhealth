@@ -14,27 +14,33 @@ const UpperHeader = () => {
     return (
         <Fragment>
             <div className='upper-header-main'>
-                <div className='header-logo-container'>
-                    <img src={logo} alt=""/>
-                </div>
-                <div className='upper-header-search-container'>
-                    <div className='search-box'>
-                        <input type="text" placeholder='Search' />
-                        <button><GoSearch /></button>
+                <div className='upper-1'>
+                    <div className='header-logo-container'>
+                        <img src={logo} alt="" />
+                    </div>
+                    <div className='upper-header-search-container'>
+                        <div className='search-box'>
+                            <input type="text" placeholder='Search' />
+                            <button><GoSearch /></button>
+                        </div>
                     </div>
                 </div>
-                <div className='user-info-main'>
-                    <span><SlPhone /> +91 84379237329</span>
-                    <RxDividerVertical />
-                    <span><BiUser /> My cccount</span>
-                </div>
-                <div className='upper-header-icons-main'>
-                    <div className='header-icon'><FaRegHeart /></div>
-                    <div className='header-icon'><TfiLocationArrow /></div>
-                    <div className='header-icon'>
-                        <BsCart3 />
+
+
+                <div className='upper-2'>
+                    <div className='user-info-main'>
+                        <span><SlPhone /> +91 84379237329</span>
+                        <RxDividerVertical />
+                        <span><BiUser /> My cccount</span>
                     </div>
-                    <span className='cart-count'>2</span>
+                    <div className='upper-header-icons-main'>
+                        <div className='header-icon'><FaRegHeart /></div>
+                        <div className='header-icon'><TfiLocationArrow /></div>
+                        <div className='header-icon'>
+                            <BsCart3 />
+                        </div>
+                        <span className='cart-count'>2</span>
+                    </div>
                 </div>
             </div>
 

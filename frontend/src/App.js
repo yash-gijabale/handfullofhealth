@@ -3,6 +3,8 @@ import './app.css'
 import Home from './pages/home/Home';
 import { Route, Routes } from "react-router-dom"
 import ShopByBrand from './pages/shopByBrand/ShopByBrand';
+import Footer from './components/footer/Footer';
+
 
 function App() {
   return (
@@ -19,6 +21,7 @@ function App() {
         <Route path='/blog' element={<ShopByBrand />} />
         <Route path='/contact' element={<ShopByBrand />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
