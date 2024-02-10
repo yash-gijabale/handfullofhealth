@@ -1,50 +1,65 @@
-import React from 'react'
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-const responsive = {
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 4,
-    slidesToSlide: 2 // optional, default to 1.
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 2,
-    slidesToSlide: 2 // optional, default to 1.
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-    slidesToSlide: 1 // optional, default to 1.
-  }
-};
+import React, { useEffect, useState } from 'react'
+import './productPage.css'
+import ProductCard from '../../components/product/ProductCard'
+import PrductFilter from '../../components/product/PrductFilter'
+import { useDispatch, useSelector } from 'react-redux'
+import { getAllProducts } from '../../actions/productAction'
+import { Link, useNavigate, useSearchParams } from 'react-router-dom'
+import ReactPaginate from 'react-paginate';
+import {PRODUCT_PER_PAGE} from '../../constant/productConstant'
+
 const ShopByBrand = () => {
+  const dispatch = useDispatch()
+  const { productsloading, allProducts, totalProduct } = useSelector(state => state.allProducts)
+  const [params] = useSearchParams()
+  let keyword = params.get('keyword') ? params.get('keyword') : ''
+  console.log(keyword)
+
+  let [page, setPage] = useState(1)
+
+  useEffect(() => {
+    dispatch(getAllProducts(keyword, page))
+
+  }, [dispatch, keyword, page])
+  // console.log(allProducts)
+
+  const handelPagonation = (e) => {
+    setPage(e.selected + 1)
+  }
+
+
   return (
-    <Carousel
-      swipeable={false}
-      draggable={false}
-      showDots={true}
-      responsive={responsive}
-      // ssr={true} // means to render carousel on server-side.
-      infinite={true}
-      autoPlay={false}
-      autoPlaySpeed={7000}
-      keyBoardControl={true}
-      customTransition="all 1.5"
-      transitionDuration={500}
-      containerClass="carousel-container"
-      removeArrowOnDeviceType={["tablet", "mobile"]}
-      // deviceType={this.props.deviceType}
-      dotListClass="custom-dot-list-style"
-      itemClass="carousel-item-padding-40-px"
-    >
-      <div className='slider'>Item 1</div>
-      <div className='slider'>Item 2</div>
-      <div className='slider'>Item 3</div>
-      <div className='slider'>Item 4</div>
-      <div className='slider'>Item 45</div>
-      <div className='slider'>Item 6</div>
-    </Carousel>
+    <div className='product-page-main'>
+      <div className='product-page-container'>
+        <PrductFilter />
+        <div className='product-main'>
+
+          <div className='products-container'>
+            {
+              !productsloading ?
+                allProducts.map(product => (
+                  <ProductCard product={product} key={product._id} />
+                ))
+
+                : ''
+            }
+          </div>
+            <ReactPaginate
+              breakLabel="..."
+              nextLabel=">"
+              onPageChange={handelPagonation}
+              pageRangeDisplayed={2}
+              pageCount={totalProduct/PRODUCT_PER_PAGE}
+              previousLabel="<"
+              renderOnZeroPageCount={null}
+              className={totalProduct/4 > 5 ? 'pagination max-width-pagination' : 'pagination'}
+              activeClassName='active-page'
+            />
+
+        </div>
+      </div>
+
+    </div>
   )
 }
 

@@ -30,7 +30,10 @@
     align-items: center;
     justify-content: center;
 }
+.shop-by-category-slide-loader{
+    background-color: rgb(183, 180, 180);
 
+}
 .shop-by-category-slide .slide-info {
     width: 40%;
     height: 100%;

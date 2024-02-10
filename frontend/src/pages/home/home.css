@@ -2,6 +2,8 @@
     --montse: 'Montserrat', sans-serif;
 }
 
+
+
 .banner-main {
     width: 100vw;
     height: 432px;
@@ -505,6 +507,9 @@
     transition: 0.2s all ease-in-out;
 }
 
+.newArrival-product-slide:hover{
+    cursor: pointer;
+}
 
 
 /* MINI BANNER */
@@ -610,14 +615,35 @@
 }
 
 .testimonial-container {
-    width: 90%;
-    height: 100%;
+    width: 80%;
+    height: 80%;
     margin: auto;
-    display: flex;
-    flex-wrap: wrap;
+    position: relative;
+    left: 2%;
+    display: -webkit-box;
+    overflow-x: auto;
     gap: 1rem;
     margin-top: 2rem;
     justify-content: space-evenly;
+}
+
+.testimonial-container::-webkit-scrollbar {
+    width: 2px;
+    height: 5px;
+}
+
+.testimonial-container::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(255, 255, 255, 0); 
+    border-radius: 10px;
+    width: 2px;
+
+}
+
+.testimonial-container::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: #4F9483;
+    height: 2px;
+    width: 2px !important;
 }
 
 .faq-main {
@@ -758,4 +784,45 @@
     .home-offers-container .offer-card{
         margin-bottom: 10px;
     }
+
+    .home-mini-banner-container{
+        flex-direction: column;
+    }
+    .home-mini-banner-info{
+        width: 100%;
+    }
+    .home-mini-banner-info h3{
+        font-size: 30px;
+        line-height: 35px;
+    }
+
+    .home-mini-banner-img {
+        top: 2%;
+        left: -32%;
+    }
+
+    .home-mini-banner-img img{
+        width: 12%;
+        top: -12%;
+        left: 12% !important;
+    } 
+
+    .combo-section-container{
+        flex-direction: column;
+        height: auto;
+        gap: 30px;
+    }
+    .combo-section-card {
+       height: 540px !important; 
+    }
+
+    .testimonial-main{
+        height: auto;
+    }
+
+    .faq-container{
+        width: 90% !important;
+    }
+
+    
 }

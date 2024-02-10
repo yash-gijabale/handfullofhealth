@@ -1,4 +1,4 @@
-import React, { Fragment, useRef } from 'react'
+import React, { Fragment, useEffect, useRef, useState } from 'react'
 // import banner1 from '../../images/banner1.svg'
 // import banner2 from '../../images/banner4.svg'
 // import banner3 from '../../images/banner2.svg'
@@ -18,18 +18,48 @@ import { BsArrowLeftCircle } from "react-icons/bs";
 import { BsArrowRightCircle } from "react-icons/bs";
 
 import './home.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 import Feature from '../../components/home/Feature'
-import ShopByCategoryCard from '../../components/home/ShopByCategoryCard'
+import ShopByCategoryCard, { ShopByCategoryCardLoader } from '../../components/home/ShopByCategoryCard'
 import BestSelingProductCard from '../../components/home/BestSelingProductCard'
 import NewArrivalCard from '../../components/home/NewArrivalCard'
 import ComboCard from '../../components/home/ComboCard'
 import TestimonialCard from '../../components/home/TestimonialCard'
 import FaqCard from '../../components/home/FaqCard'
+import { useDispatch, useSelector } from 'react-redux'
+import { getAllCategory } from '../../actions/categoryAction'
+import { getAllProducts } from '../../actions/productAction'
+import axios from 'axios'
+
+
+
 
 const Home = () => {
+
+    const dispatch = useDispatch()
+    const { loading, categories } = useSelector(state => state.allCategories)
+    const { productsloading, allProducts } = useSelector(state => state.allProducts)
+
+    const [testimonial, setTestimonials] = useState([])
+
+    useEffect(() => {
+        dispatch(getAllCategory());
+        dispatch(getAllProducts())
+
+        const getTestimonials = async() =>{
+            let {data} = await axios.get('/api/v1/allTestimonials')
+            setTestimonials(data.result)
+        }
+
+        getTestimonials()
+
+
+
+    }, [dispatch])
+    console.log(categories)
+    console.log(testimonial)
 
     const slider = useRef(null)
     const slide = useRef(null)
@@ -98,6 +128,7 @@ const Home = () => {
         }
     }
 
+    const navigate = useNavigate()
     return (
         <Fragment>
             <div className='home-main'>
@@ -107,7 +138,7 @@ const Home = () => {
                             <div className='banner1-info'>
                                 <h3>Carnival Dates</h3>
                                 <span>Happy weekend 25% off</span>
-                                <button className='shop-now-btn'>Shop now</button>
+                                <Link to={'/product/65a941ccbeedc79ba2d9d53d'}><button className='shop-now-btn'>Shop now</button></Link>
                             </div>
                             <div className='banner1-img'>
                                 <img src={bannerp1} alt="product" />
@@ -120,7 +151,7 @@ const Home = () => {
                             </div>
                             <div className='banner2-img'>
                                 <img src={bannerp2} alt="product" />
-                                <Link to={'#'}>Shop now</Link>
+                                <Link to={'/product/65bd0d9c9bee5efa24ac6bf6'}>Shop now</Link>
                             </div>
                             {/* <img src={banner2} alt="" className='banner2-bg' /> */}
 
@@ -131,7 +162,7 @@ const Home = () => {
                                 <div className='banner3-info'>
                                     <span>Explore wide range of</span>
                                     <h3> Fresh Cereal</h3>
-                                    <Link to={'#'}>Shop now</Link>
+                                    <Link to={'/product/65bd0e3d9bee5efa24ac6bf9'}>Shop now</Link>
                                 </div>
                                 <div className='banner3-img'>
                                     <img src={bannerp3} alt="product" />
@@ -170,27 +201,19 @@ const Home = () => {
                         <div className='carosel'>
                             <BsArrowLeftCircle id='prev' onClick={(e) => handleNext(e)} ></BsArrowLeftCircle>
                             <div className='shop-by-category-slider' id='slider' ref={slider}>
-                                <div className='slide' ref={slide}>
-                                    <ShopByCategoryCard title={'Nuts'} discription={'Krack Nut Coated Peanuts Pudina Patakha -160gm'} productImage={bannerp2} />
-                                </div>
-                                <div className='slide' ref={slide}>
-                                    <ShopByCategoryCard title={'Dry Fruits'} discription={'Krack Nut Coated Peanuts Pudina Patakha -160gm'} productImage={bannerp1} />
-
-                                </div>
-                                <div className='slide' ref={slide}>
-                                    <ShopByCategoryCard title={'Snacks'} discription={'Krack Nut Coated Peanuts Pudina Patakha -160gm'} productImage={bannerp3} />
-
-                                </div>
-                                <div className='slide' ref={slide}>
-                                    <ShopByCategoryCard title={'Dates'} discription={'Krack Nut Coated Peanuts Pudina Patakha -160gm'} productImage={bannerp4} />
-
-                                </div>
-                                <div className='slide' ref={slide}>
-                                    <ShopByCategoryCard title={'Carnivls'} discription={'Krack Nut Coated Peanuts Pudina Patakha -160gm'} productImage={bannerp2} />
-
-                                </div>
-
-
+                                {
+                                    loading ?
+                                        <ShopByCategoryCardLoader />
+                                        :
+                                        categories.map(category => (
+                                            <div className='slide' ref={slide} key={category._id}>
+                                                <ShopByCategoryCard
+                                                    title={category.categoryName}
+                                                    discription={category.discription}
+                                                    productImage={category.image.secure_url} />
+                                            </div>
+                                        ))
+                                }
                             </div>
                             <BsArrowRightCircle id='next' onClick={(e) => handleNext(e)}>next</BsArrowRightCircle>
                         </div>
@@ -206,29 +229,16 @@ const Home = () => {
                         <div className='carosel'>
                             <BsArrowLeftCircle id='prev' onClick={(e) => bestSelingHandleNext(e)} ></BsArrowLeftCircle>
                             <div className='best-sealing-product-slider' id='slider' ref={bestSelingSlider}>
-                                <div className='best-sealing-product-slide' ref={bestSelingSlide}>
-                                    <BestSelingProductCard title={'Nuts'} discription={'Krack Nut Coated Peanuts Pudina Patakha -160gm'} productImage={bannerp2} />
-                                </div>
-                                <div className='best-sealing-product-slide' ref={bestSelingSlide}>
-                                    <BestSelingProductCard title={'Dry Fruits'} discription={'Krack Nut Coated Peanuts Pudina Patakha -160gm'} productImage={bannerp1} />
+                                {
+                                    !productsloading ?
+                                        allProducts.map(product => (
+                                            <div className='best-sealing-product-slide' ref={bestSelingSlide} onClick={() => navigate(`/product/${product._id}`)}>
+                                                <BestSelingProductCard product={product} />
+                                            </div>
+                                        ))
 
-                                </div>
-                                <div className='best-sealing-product-slide' ref={bestSelingSlide}>
-                                    <BestSelingProductCard title={'Snacks'} discription={'Krack Nut Coated Peanuts Pudina Patakha -160gm'} productImage={bannerp3} />
-
-                                </div>
-                                <div className='best-sealing-product-slide' ref={bestSelingSlide}>
-                                    <BestSelingProductCard title={'Dates'} discription={'Krack Nut Coated Peanuts Pudina Patakha -160gm'} productImage={bannerp4} />
-
-                                </div>
-                                <div className='best-sealing-product-slide' ref={bestSelingSlide}>
-                                    <BestSelingProductCard title={'Carnivls'} discription={'Krack Nut Coated Peanuts Pudina Patakha -160gm'} productImage={bannerp2} />
-
-                                </div>
-                                <div className='best-sealing-product-slide' ref={bestSelingSlide}>
-                                    <BestSelingProductCard title={'Carnivls'} discription={'Krack Nut Coated Peanuts Pudina Patakha -160gm'} productImage={bannerp2} />
-
-                                </div>
+                                        : ''
+                                }
 
                             </div>
                             <BsArrowRightCircle id='next' onClick={(e) => bestSelingHandleNext(e)}>next</BsArrowRightCircle>
@@ -254,7 +264,7 @@ const Home = () => {
                                 <a href="#">View all</a>
                             </div>
                         </div>
-                        <div className='offer-card' style={{ background: `linear-gradient(90deg, #E1D13BD9 ,#4A430100), url(${offer2})` }}>
+                        <div className='offer-card' style={{ background: `linear-gradient(0deg, #1e1e1f91 ,#f1f1f100), url(${offer2})` }}>
                             <div className='offer-card-info card3'>
                                 <h3 className='offer-card-title'>Start gifting happiness today</h3>
                                 <a href="#">View all</a>
@@ -272,30 +282,15 @@ const Home = () => {
                         <div className='carosel'>
                             <BsArrowLeftCircle id='prev' onClick={(e) => newArrivalHandleNext(e)} ></BsArrowLeftCircle>
                             <div className='best-sealing-product-slider' id='slider' ref={newArrivalSlider}>
-                                <div className='newArrival-product-slide' ref={newArrivalSlide}>
-                                    <NewArrivalCard title={'Nuts'} discription={'Krack Nut Coated Peanuts Pudina Patakha -160gm'} productImage={bannerp2} />
-                                </div>
-                                <div className='newArrival-product-slide' ref={newArrivalSlide}>
-                                    <NewArrivalCard title={'Dry Fruits'} discription={'Krack Nut Coated Peanuts Pudina Patakha -160gm'} productImage={bannerp1} />
+                                {
+                                    !productsloading ?
+                                        allProducts.map(product => (
 
-                                </div>
-                                <div className='newArrival-product-slide' ref={newArrivalSlide}>
-                                    <NewArrivalCard title={'Snacks'} discription={'Krack Nut Coated Peanuts Pudina Patakha -160gm'} productImage={bannerp3} />
-
-                                </div>
-                                <div className='newArrival-product-slide' ref={newArrivalSlide}>
-                                    <NewArrivalCard title={'Dates'} discription={'Krack Nut Coated Peanuts Pudina Patakha -160gm'} productImage={bannerp4} />
-
-                                </div>
-                                <div className='newArrival-product-slide' ref={newArrivalSlide}>
-                                    <NewArrivalCard title={'Carnivls'} discription={'Krack Nut Coated Peanuts Pudina Patakha -160gm'} productImage={bannerp2} />
-
-                                </div>
-                                <div className='newArrival-product-slide' ref={newArrivalSlide}>
-                                    <NewArrivalCard title={'Carnivls'} discription={'Krack Nut Coated Peanuts Pudina Patakha -160gm'} productImage={bannerp2} />
-
-                                </div>
-
+                                            <div className='newArrival-product-slide' ref={newArrivalSlide} onClick={() => navigate(`/product/${product._id}`)}>
+                                                <NewArrivalCard product={product} />
+                                            </div>
+                                        )) : ''
+                                }
                             </div>
                             <BsArrowRightCircle id='next' onClick={(e) => newArrivalHandleNext(e)}>next</BsArrowRightCircle>
                         </div>
@@ -336,10 +331,11 @@ const Home = () => {
                         <h3>TESTIMONIALS</h3>
                     </div>
                     <div className='testimonial-container'>
-                        <TestimonialCard />
-                        <TestimonialCard />
-                        <TestimonialCard />
-                        <TestimonialCard />
+                        {
+                            testimonial.map(testimonial =>{
+                                return <TestimonialCard data={testimonial}/>
+                            })
+                        }
                     </div>
                 </div>
 

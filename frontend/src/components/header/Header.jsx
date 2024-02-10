@@ -3,11 +3,13 @@ import UpperHeader from './UpperHeader'
 import LowerHeader from './LowerHeader'
 
 const Header = () => {
+
+
     return (
         <Fragment>
             <div className='header'>
                 <UpperHeader />
-                <LowerHeader />
+                <LowerHeader  />
             </div>
         </Fragment>
     )

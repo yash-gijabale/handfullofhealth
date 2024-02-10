@@ -13,10 +13,12 @@ app.use(cookieParser())
 const product = require('./routes/productRoute')
 const user = require('./routes/userRoutes')
 const faq = require('./routes/faqRoute')
+const testimonial = require('./routes/testimonialRoutes')
 
 app.use('/api/v1/', product)
 app.use('/api/v1/', user)
 app.use('/api/v1/', faq)
+app.use('/api/v1/', testimonial)
 
 
 

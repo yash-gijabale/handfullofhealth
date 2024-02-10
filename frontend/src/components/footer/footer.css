@@ -4,6 +4,7 @@
     height: auto;
     background-color: #E4F5DC;
     padding-bottom: 2rem;
+    margin-top: 2rem;
 }
 
 .footer-main .footer-container {
@@ -143,4 +144,30 @@
 }
 .copyrigth a{
     color: #40A35B;
+}
+
+
+@media (max-width: 500px) {
+    .footer-container .section-1{
+        width: 50%;
+    }
+    .footer-main .footer-container{
+       flex-direction: column; 
+    }
+    .footer-container .section-2{
+        width: 100%;
+    }
+    .footerlink{
+        height: 220px;
+    }
+
+    .footer-container .section-3 {
+        width: 100%;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+    }
+
+    .footer-container .section-1 img{
+        width: 70%;
+    }
 }

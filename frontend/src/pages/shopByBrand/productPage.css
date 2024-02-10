@@ -1,0 +1,114 @@
+.product-page-main {
+    width: 100vw;
+    /* min-height: 100vh; */
+    height: auto;
+    /* background-color: lightblue; */
+    margin-top: 2rem;
+}
+
+.product-page-container {
+    width: 90%;
+    /* min-height: 100vh; */
+    height: auto;
+    margin: auto;
+    display: flex;
+}
+.product-main{
+    width: 100%;
+}
+
+.filter-main {
+    width: 20%;
+    /* min-height: 100vh; */
+    height: auto;
+    /* background-color: rgb(62, 128, 128); */
+
+}
+
+.products-container {
+    width: 100%;
+    /* min-height: 100vh; */
+    height: auto;
+    /* background-color: rgb(164, 167, 167); */
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+
+    /* margin: auto; */
+}
+
+.filter-main .filter-title {
+    width: 100%;
+    height: 5%;
+    margin-top: 1rem;
+    font-family: var(--montse);
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 18px;
+}
+
+.filter-main .filter-by-stock-main {
+    width: 100%;
+    height: auto;
+    /* background-color: royalblue; */
+    font-family: var(--inter);
+    font-weight: 400;
+    line-height: 15px;
+
+}
+
+.filter-main .filter-by-stock-main .filter-box {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    gap: 10px;
+    margin-top: 10px;
+
+}
+
+input:checked ~ .checkmark {
+    background-color: red;
+  }
+
+
+.pagination{
+    display: flex;
+    width: auto;
+    max-width: 20%;
+    gap: 1rem;
+    margin: 1rem auto auto;
+
+    position: relative;
+    /* background-color: aqua; */
+    justify-content: space-evenly;
+    list-style: none;
+}
+
+.max-width-pagination{
+    max-width: 40% !important;
+}
+
+.pagination li{
+    width: 30px;
+    height: 30px;
+    background-color: #40A35B;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: var(--inter);
+    font-weight: 500;
+}
+
+
+.pagination li a{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.active-page{
+    background-color: #E9D987 !important;
+}
