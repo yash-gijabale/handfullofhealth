@@ -31,7 +31,24 @@
     font-weight: 500;
     font-size: 18px;
 }
-.cart-product-footer > button, .cart-empty-main .shop-now{
+.cart-product-footer > button{
+    background-color: rgb(0, 0, 0);
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s all ease-in-out;
+}
+
+.cart-product-footer > button:hover{
+    background-color: rgb(255, 255, 255);
+    border: 2px solid #000000;
+    color: #000000;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.cart-empty-main .shop-now{
     background-color: #40A35B;
     color: aliceblue;
     font-size: 14px;

@@ -18,3 +18,15 @@ exports.createFaq = catchAsyncError(async (req, res, next) => {
         result: faq
     })
 })
+
+
+exports.getAllFaqs = catchAsyncError(async (req, res, next) =>{
+
+    const faqs = await Faq.find({});
+
+    res.json({
+        success: true,
+        result: faqs
+    })
+
+})

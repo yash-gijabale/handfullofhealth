@@ -1,0 +1,258 @@
+.checkout-main {
+    width: 100vw;
+    min-height: 100vh;
+}
+
+.checkout-header-main {
+    width: 100%;
+    height: 70px;
+    /* background-color: hwb(0 90% 10%); */
+    border-bottom: 1px solid rgb(230, 230, 230);
+    ;
+}
+
+.checkout-header {
+    width: 70%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.checkout-header h2 {
+    font-size: 28px;
+    font-weight: 400;
+    font-family: var(--inter);
+}
+
+.checkout-header .cart-icon {
+    font-size: 35px;
+}
+
+.checkout-body-main {
+    width: 100%;
+    /* background-color: rebeccapurple ; */
+    min-height: 90vh;
+}
+
+.checkout-body-container {
+    width: 70%;
+    /* background-color: rgb(172, 171, 172) ; */
+    margin: auto;
+    min-height: 90vh;
+    display: flex;
+}
+
+.checkout-body-container .checkout-form-body {
+    min-height: 90vh;
+    width: 60%;
+    border-right: 1px solid lightgray;
+}
+
+.checkout-body-container .checkout-product-body {
+    min-height: 90vh;
+    width: 40%;
+
+    /* background-color: aqua; */
+}
+
+.email-from {
+    /* background-color: rebeccapurple; */
+    display: flex;
+    flex-direction: column;
+}
+
+.email-from .title-box {
+    display: flex;
+    width: 90%;
+    margin: auto;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+}
+
+.email-from .title-box h3 {
+    font-size: 25px;
+    font-family: var(--inter);
+    font-weight: 500;
+    margin: 10px;
+}
+
+.email-from .email-input{
+    width: 90%;
+    margin: auto;
+    height: 50px;
+    border-radius:5px;
+    padding-left: 10px;
+    border: 1px solid lightgray;
+} 
+
+/* .dilevery-form-main{
+    /* margin-top: 1rem; */
+
+/* } */
+.dilevery-form{
+    display: flex;
+    flex-direction: column;
+    align-content:center;
+    gap: 10px;
+    justify-content: center;
+}
+
+.dilevery-input{
+    width: 90%;
+    margin: auto;
+    height: 50px;
+    border-radius: 5px;
+    padding-left: 10px;
+    border: 1px solid lightgray;
+}
+
+.dilevery-form .user-name{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.dilevery-form .user-name .dilevery-input{
+    width: 43%;
+    margin: 0;
+}
+
+.pincode-from{
+    width: 92%;
+    gap: 15px;
+    justify-content: space-between;
+    display: flex;
+    margin: auto;
+}
+.paynow-btn{
+    width: 92%;
+    border-radius: 5px;
+    height: 50px;
+    margin: auto;
+    background-color: #3a9046;
+    color: white;
+    font-size: 18px;
+    font-family: var(--inter);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.checkout-product-body{
+    margin: 2rem 0 0 1rem ;
+}
+
+.cupon-form-main{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.cupon-form-main .cupon-text{
+    width: 100%;
+    height: 60px;
+    padding-left: 10px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+}
+.cupon-form-main .cupon-text::placeholder{
+    font-family: var(--inter);
+    font-size: 15px;
+}
+.cupon-form-main .cupon-btn{
+    height: 62px;
+    border-radius: 5px;
+    margin: 0;
+    width: 30%;
+    background-color: #979a98;
+    color: aliceblue;
+    font-weight: 500;
+    font-size: 17px;
+    transition: 0.2s all ease-in-out;
+
+}
+
+.cupon-form-main .cupon-btn:hover{
+    background-color: #3a9046;
+    cursor: pointer;
+}
+
+.checkout-product-cart{
+    width: 100%;
+    height: 70px;
+    margin-bottom: 10px;
+    /* background-color: red; */
+    display: flex;
+    justify-content: space-between;
+    /* justify-content: center; */
+    border-radius: 0 0 5px 5px;
+    border-bottom: 1px solid #dbdfdc;
+}
+.checkout-product-cart .product-info{
+    width: 75%;
+    /* background-color: #3a9046; */
+    display: flex;
+    /* align-items: center; */
+    font-family: var(--inter);
+    
+} 
+.checkout-product-cart .product-info img{
+    height: 100%;
+    width: 25%;
+}
+
+.checkout-product-cart .product-info span{
+    padding-top: 5px;
+    margin-left: 10px;
+    font-size: 14px;
+    color: #6d706e;
+}
+
+.product-price{
+    padding-top: 5px;
+    font-weight: 600;
+}
+
+.price-badge{
+    position: relative;
+    width: 18px;
+    height: 18px;
+    border-radius: 100%;
+    display: flex;
+    font-size: 10px;
+    color: aliceblue;
+    justify-content: center;
+    align-items: center;
+    background-color: #3a9046;
+    right: -19%;
+    top: -19%;
+}
+
+.price-summury{
+    width: 100%;
+    /* background-color: #3a9046; */
+}
+
+.summury{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+    color: #3b3c3b;
+}
+
+.text-dark{
+    color: #000000 !important;
+    font-weight: 500;
+}
+
+.border-bottom{
+    border-bottom: 1px solid #9fa2a0;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}

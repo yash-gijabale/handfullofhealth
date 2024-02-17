@@ -9,6 +9,8 @@ import Contact from './pages/contact/Contact';
 import store from './store';
 import { loadCart } from './actions/productAction';
 import MyCart from './pages/myCart/MyCart';
+import Checkout from './pages/checkout/Checkout';
+import Layout from './components/layout/Layout';
 
 
 function App() {
@@ -16,21 +18,24 @@ function App() {
   store.dispatch(loadCart())
   return (
     <div className="App">
-      <Header />
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/products' element={<ShopByBrand />} />
-        <Route path='/product/:id' element={<ProductDetails />} />
-        <Route path='/gifting' element={<ShopByBrand />} />
-        <Route path='/offers' element={<ShopByBrand />} />
-        <Route path='/arrival' element={<ShopByBrand />} />
-        <Route path='/corparatr' element={<ShopByBrand />} />
-        <Route path='/about' element={<ShopByBrand />} />
-        <Route path='/blog' element={<ShopByBrand />} />
-        <Route path='/contact' element={<Contact />} />
-        <Route path='/myCart' element={<MyCart />} />
+        <Route element={<Layout />}>
+          <Route path='/' element={<Home />} />
+          <Route path='/products' element={<ShopByBrand />} />
+          <Route path='/product/:id' element={<ProductDetails />} />
+          <Route path='/gifting' element={<ShopByBrand />} />
+          <Route path='/offers' element={<ShopByBrand />} />
+          <Route path='/arrival' element={<ShopByBrand />} />
+          <Route path='/corparatr' element={<ShopByBrand />} />
+          <Route path='/about' element={<ShopByBrand />} />
+          <Route path='/blog' element={<ShopByBrand />} />
+          <Route path='/contact' element={<Contact />} />
+          <Route path='/myCart' element={<MyCart />} />
+        </Route>
       </Routes>
-      <Footer />
+      <Routes>
+        <Route path='/checkout' element={<Checkout />} />
+      </Routes>
     </div>
   );
 }

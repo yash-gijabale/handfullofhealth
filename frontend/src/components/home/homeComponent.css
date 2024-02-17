@@ -404,7 +404,7 @@
     font-family: var(--inter);
     line-height: 15px;
     font-weight: 500;
-    margin: auto;
+    margin: 10px;
 }
 .faq-question-box .faq-icon{
     margin-right: 2rem;

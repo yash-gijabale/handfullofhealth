@@ -43,17 +43,19 @@ const Home = () => {
     const { productsloading, allProducts } = useSelector(state => state.allProducts)
 
     const [testimonial, setTestimonials] = useState([])
+    const [faqs, setFaqs] = useState([])
 
     useEffect(() => {
         dispatch(getAllCategory());
         dispatch(getAllProducts())
 
-        const getTestimonials = async() =>{
+        const getTestimonialsAndFaq = async() =>{
             let {data} = await axios.get('/api/v1/allTestimonials')
+            let faqs = await axios.get('/api/v1/faqs');
             setTestimonials(data.result)
+            setFaqs(faqs.data.result)
         }
-
-        getTestimonials()
+        getTestimonialsAndFaq()
 
 
 
@@ -346,11 +348,11 @@ const Home = () => {
                         <h3>FAQ</h3>
                     </div>
                     <div className='faq-container'>
-                        <FaqCard id={'faq-1'} />
-                        <FaqCard id={'faq-2'} />
-                        <FaqCard id={'faq-3'} />
-                        <FaqCard id={'faq-4'} />
-                        <FaqCard id={'faq-5'} />
+                        {
+                            faqs.map(faq => (
+                                <FaqCard id={'faq-1'} faqs={faq} key={faq._id}/>
+                            ))
+                        }
                     </div>
                 </div>
             </div>
