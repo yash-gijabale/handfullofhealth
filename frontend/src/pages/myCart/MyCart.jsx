@@ -23,7 +23,7 @@ const MyCart = () => {
             <div className='my-cart-main'>
 
                 {
-                    cart.length > 0 ?
+                    cart && cart.length > 0 ?
                         <Fragment>
                             <div className='my-cart-container'>
                                 {

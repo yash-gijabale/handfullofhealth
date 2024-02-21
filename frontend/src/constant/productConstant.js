@@ -12,6 +12,7 @@ export const All_PRODUCTS_FAIL = 'ALL_PRODUCT_FAIL'
 export const ADD_TO_CARD = 'ADD_TO_CARD'
 export const REMOVE_FROM_CARD  = 'REMOVE_FROM_CARD '
 export const LOAD_CARD = 'LOAD_CARD'
+export const EMPTY_CART = 'EMPTY_CART'
 
 
 export const PRODUCT_PER_PAGE = 8

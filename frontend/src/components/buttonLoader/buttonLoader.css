@@ -1,0 +1,19 @@
+.btn-loader{
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border-bottom: 3px solid rgb(85, 83, 83);
+    border-left: 3px solid rgb(85, 83, 83);
+    /* border-right: 3px solid black; */
+    border-radius: 70%;
+    animation: roated 0.7s linear infinite;
+}
+
+@keyframes roated {
+    0% {
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}

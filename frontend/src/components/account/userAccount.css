@@ -1,0 +1,65 @@
+.user-activity-sub-card{
+    width: 250px;
+    height: 80px;
+    background-color: #f8f7f3;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+
+}
+
+.user-activity-sub-card .activity-icon{
+    width: 30%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.user-activity-sub-card .activity-icon img{
+    width: 75%;
+    height: 75%;
+}
+
+.user-activity-sub-card .activity-info > h4{
+    /* line-height: 10px; */
+    margin: 0;
+    margin-left: 1rem;
+    color: rgb(40, 40, 39);
+}
+
+.user-order-sub-card{
+    width: 95%;
+    height: 50px;
+    background-color: rgb(248, 243, 243);
+    margin: 10px auto;
+    border-radius: 5px;
+}
+
+.order-card-header{
+    /* width: 93%; */
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.user-order-sub-card{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user-order-sub-card .order-status{
+    text-align: center;
+    width: 25% ;
+    display: grid;
+    place-items: center;
+
+}
+
+.order-card-header span ,.user-order-sub-card div{
+    width: 25% ;
+    text-align: center;
+}

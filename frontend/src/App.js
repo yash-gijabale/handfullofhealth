@@ -11,11 +11,23 @@ import { loadCart } from './actions/productAction';
 import MyCart from './pages/myCart/MyCart';
 import Checkout from './pages/checkout/Checkout';
 import Layout from './components/layout/Layout';
+import Login from './pages/account/Login';
+import Account from './pages/account/Account';
+import { loadUser } from './actions/userAction';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 
 function App() {
+  useEffect(() => {
 
-  store.dispatch(loadCart())
+    store.dispatch(loadCart())
+    store.dispatch(loadUser())
+
+  })
+  // const user = useSelector(state => state.user)
+  // const cart = useSelector(state => state.cartItem)
+  // console.log(cart)
   return (
     <div className="App">
       <Routes>
@@ -31,9 +43,11 @@ function App() {
           <Route path='/blog' element={<ShopByBrand />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/myCart' element={<MyCart />} />
+          <Route path='/account' element={<Account />} />
         </Route>
       </Routes>
       <Routes>
+        <Route path='/login' element={<Login />} />
         <Route path='/checkout' element={<Checkout />} />
       </Routes>
     </div>

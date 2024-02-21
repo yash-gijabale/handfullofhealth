@@ -3,11 +3,13 @@ import './checkout.css'
 import { IoBagCheckOutline } from "react-icons/io5";
 import { Link } from 'react-router-dom';
 import CheckoutProductCard from '../../components/product/CheckoutProductCard';
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ButtonLoader from '../../components/buttonLoader/ButtonLoader';
+import { emptyCart } from '../../actions/productAction';
 
 const Checkout = () => {
 
@@ -16,7 +18,10 @@ const Checkout = () => {
 
     let [cartPrice, setCartPrice] = useState(0)
 
+    let [loader, setLoader] = useState(false)
+
     // const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     useEffect(() => {
         let price = 0
@@ -61,6 +66,7 @@ const Checkout = () => {
         // console.log(orderData)
         console.log(e)
 
+        setLoader(true)
         const { data } = await axios.post('/api/v1/createOrder', orderData, {
             headers: {
                 'Content-Type': 'application/json'
@@ -69,10 +75,13 @@ const Checkout = () => {
 
 
         let form = document.getElementById('orderForm')
+        setLoader(false)
         form.reset()
+        // localStorage.cleacr()
+        dispatch(emptyCart())
         console.log(data)
         if(data.success){
-            showtoast('Product Added!')
+            showtoast('Order Added!')
         }
        
     }
@@ -114,7 +123,7 @@ const Checkout = () => {
                                         <input type='text' name='pincode' className='dilevery-input' placeholder='Pin code' />
                                     </div>
                                     <input type='text' name='mobileNumber' className='dilevery-input' placeholder='Mobile Number' />
-                                    <button className='paynow-btn'>Pay Now</button>
+                                    <button className='paynow-btn'>{loader ? <ButtonLoader /> : 'Pay Now'}</button>
                                 </div>
                             </div>
                         </form>

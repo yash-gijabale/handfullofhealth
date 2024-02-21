@@ -10,13 +10,18 @@ import { TfiLocationArrow } from "react-icons/tfi";
 import { BsCart3 } from "react-icons/bs";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import CartPreview from './CartPreview';
-
-
+import {Link} from 'react-router-dom'
+import { logout } from '../../actions/userAction';
+import { IoIosLogOut } from "react-icons/io";
+import { FaRegUser } from "react-icons/fa";
 const UpperHeader = () => {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const [search, setSearch] = useState('')
+
+    const {user} = useSelector(state => state.user)
 
     const { cart } = useSelector(state => state.cartItem)
     console.log(cart)
@@ -51,6 +56,10 @@ const UpperHeader = () => {
         cartPriviewMain.classList.add('show-cart-privew')
     }
 
+    const handleLogout = () =>{
+        dispatch(logout())
+    }
+
     return (
         <Fragment>
             <div className='upper-header-main'>
@@ -71,15 +80,19 @@ const UpperHeader = () => {
                     <div className='user-info-main'>
                         <span><SlPhone /> +91 84379237329</span>
                         <RxDividerVertical />
-                        <span><BiUser /> My cccount</span>
+                        <span><Link to={'/account'}><BiUser /> My cccount</Link></span>
                     </div>
                     <div className='upper-header-icons-main'>
                         <div className='header-icon'><FaRegHeart /></div>
-                        <div className='header-icon'><TfiLocationArrow /></div>
-                        <div className='header-icon' onClick={toggleCartPreview}>
-                            <BsCart3 />
-                        </div>
+                        <div className='header-icon' onClick={toggleCartPreview}><BsCart3 /></div>
                         <span className='cart-count'>{totalCartItems}</span>
+                        {
+                            user ?
+                            <div className='header-icon' title='Logout' onClick={handleLogout}><IoIosLogOut /></div>
+                            :
+                            <div className='header-icon' title='Login' ><Link to={'/login'}><FaRegUser /></Link></div>
+   
+                        }
                     </div>
                     <div className='cart-preview-main' id='cart-priview'>
                         <CartPreview/>

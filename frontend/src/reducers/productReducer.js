@@ -8,7 +8,8 @@ import {
     All_PRODUCTS_SUCCESS,
     ADD_TO_CARD,
     REMOVE_FROM_CARD,
-    LOAD_CARD
+    LOAD_CARD,
+    EMPTY_CART
 } from '../constant/productConstant'
 
 
@@ -78,7 +79,13 @@ export const addToCartReducer = (state = { cart: [] }, action) => {
             return {
                 cart: JSON.parse(action.payload)
             }
+        
+        case EMPTY_CART:
+            return{
+                cart: JSON.parse(action.payload)
+            }
         default:
             return state
     }
 }
+

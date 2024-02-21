@@ -35,7 +35,7 @@ const CartPreview = () => {
       </div>
       <div className='cart-preview'>
         {
-          cart.length > 0 ?
+          cart && cart.length > 0 ?
 
             cart.map(item => (
               <CartProduct product={item} key={item.productId} />
@@ -48,7 +48,7 @@ const CartPreview = () => {
         }
       </div>
       {
-        cart.length > 0 ?
+        cart && cart.length > 0 ?
           <div className='cart-footer'>
             <button onClick={()=>{navigate('/myCart'); togglePreview()}}>GO TO CART <FaCartShopping className='cart-footer-icon' /></button>
           </div>

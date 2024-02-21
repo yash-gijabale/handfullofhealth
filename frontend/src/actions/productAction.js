@@ -4,7 +4,8 @@ import {
     All_PRODUCTS_REQUEST,
     All_PRODUCTS_SUCCESS,
     LOAD_CARD,
-    REMOVE_FROM_CARD
+    REMOVE_FROM_CARD,
+    EMPTY_CART
 } from '../constant/productConstant'
 
 import axios from 'axios'
@@ -109,4 +110,17 @@ export const loadCart = () => (dispatch) => {
         type: LOAD_CARD,
         payload: cart
     })
+}
+
+
+export const emptyCart = () => (dispatch) =>{
+    const emptyCartData = []
+    localStorage.setItem('cartItem', JSON.stringify(emptyCartData))
+    let cart = localStorage.getItem('cartItem')
+
+    dispatch({
+        type: EMPTY_CART,
+        payload: cart
+    })
+
 }

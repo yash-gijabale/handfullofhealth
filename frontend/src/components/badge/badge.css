@@ -1,0 +1,27 @@
+.custome-badge{
+    min-width: 80px;
+    width: auto !important;
+    height: 10px;
+    padding: 10px;
+    background-color: lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.primary{
+    background-color: #ffbd59;
+    color: #262626;
+}
+
+.success{
+    background-color: rgb(92, 185, 104);
+    color: #ffffff;
+}
+
+.danger{
+    background-color: rgb(237, 99, 99);
+    color: #ffffff;
+}
