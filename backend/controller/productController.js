@@ -57,8 +57,8 @@ exports.productDetails = catchAsyncError(async (req, res, next) => {
     }
 
     const category = await Category.findById({ _id: product.category })
-    
-    productDtails = {product}
+
+    productDtails = { product }
     productDtails['categoryName'] = category.categoryName
     console.log(product)
     res.status(200).json({
@@ -356,4 +356,4 @@ exports.collectionWiseProduct = catchAsyncError(async (req, res, next) => {
             products
         }
     })
-})
+}) 

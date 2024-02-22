@@ -5,7 +5,7 @@ const checkRole = require('../middleware/checkRole');
 
 const router = express.Router()
 
-router.route('/createOrder').post(createOrder);
+router.route('/createOrder').post(isAuthenticate, createOrder);
 router.route('/myOrders').get(isAuthenticate, getMyAllOrders);
 router.route('/admin/allOrders').get(isAuthenticate, checkRole('admin') , getAllOrders);
 router.route('/admin/updateStatus/:id').put(isAuthenticate, checkRole('admin') , updateOrderStatus);

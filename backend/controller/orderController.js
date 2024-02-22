@@ -8,7 +8,7 @@ const userModel = require('../models/userModel')
 exports.createOrder = catchAsyncError(async (req, res, next) => {
     // console.log(req.body)
     let orderForm = { ...req.body }
-    orderForm.user = '65a2a96d05e65044449c00bf'
+    orderForm.user = req.user._id
     const order = await Order.create(orderForm)
     res.status(200).json({
         success: true,
@@ -32,7 +32,7 @@ exports.getMyAllOrders = catchAsyncError(async (req, res, next) => {
         const temp = []
         for (const product of order.orderItems) {
             const productData = await Product.findById({ _id: product.productId })
-            temp.push(productData)
+            temp.push({...productData._doc,  productQty: product.productQty})
         }
 
         const product = { ...order._doc }

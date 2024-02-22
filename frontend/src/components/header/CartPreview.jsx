@@ -20,7 +20,7 @@ const CartPreview = () => {
   useEffect(() => {
     let price = 0
     cart && cart.forEach(item => {
-      price += item.productPrice * item.productQty
+      price += item.productMrp * item.productQty
     })
 
     setCartPrice(price)

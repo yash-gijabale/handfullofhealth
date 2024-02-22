@@ -13,11 +13,12 @@ const MyCart = () => {
     useEffect(() => {
         let price = 0
         cart && cart.forEach(item => {
-            price += item.productPrice * item.productQty
+            price += item.productMrp * item.productQty
         })
 
         setCartPrice(price)
     }, [cart])
+    console.log(cart)
     return (
         <Fragment>
             <div className='my-cart-main'>

@@ -1,0 +1,111 @@
+.orderModal-main{
+    height: 100%;
+    width: 100%;
+    /* background-color: red; */
+    font-family: var(--inter);
+}
+
+.order-id{
+    width: 90%;
+    height: auto;
+    /* margin: auto; */
+
+}
+
+.modal-body{
+    padding-top: 0;
+}
+
+.order-address{
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+    margin: auto;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    border-bottom: 1px solid rgb(155, 154, 154);
+    border-top: 1px solid rgb(155, 154, 154);
+    margin-bottom: 1rem;
+}
+.address-title{
+    font-weight: 500;
+    line-height: 23px;
+}
+
+.address-sub{
+    font-weight: 500;
+    color: rgb(75, 74, 74);
+}
+
+.order-products-modal{
+    width: 90%;
+    margin: auto;
+    height: 60%;
+    overflow-y: auto;
+}
+.order-product-modal-footer{
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.order-product-modal-footer span{
+    font-size: 18px;
+    font-weight: 600;
+}
+/* .order-product-heading{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.order-product-card{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+} */
+
+.order-product-table{
+    width: 100%;
+    height: 90%;
+    /* background-color: aliceblue; */
+    font-size: 15px;
+    /* border: 1px solid black */
+    border-collapse: collapse
+}
+
+.order-product-table thead th{
+    /* border: 1px solid black; */
+    height: 30px;
+}
+.order-product-table thead, tbody{
+    width: 100%;
+    height: 90%;
+    overflow-y: auto;
+
+}
+
+.order-product-table tbody tr{
+    text-align: center;
+    /* background-color: lightgray; */
+    border: none;
+    border-radius: 10px;
+}
+
+.order-product-table tbody td {
+    padding: 10px;
+    height: auto;
+    border-bottom: 1px solid lightgray;
+}
+
+.order-product-card td img{
+    height: 100px;
+    width: 75px ;
+}

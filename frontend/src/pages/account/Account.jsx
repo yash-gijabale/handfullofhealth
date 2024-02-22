@@ -12,32 +12,59 @@ import commentIcon from "../../images/commentIcon.png";
 import defaultAvatar from "../../images/avatar.webp";
 import UserOrderCard from "../../components/account/UserOrderCard";
 
-import axios from 'axios'
+import axios from "axios";
+
 
 const Account = () => {
+
+ 
+
   const { user } = useSelector((state) => state.user);
 
   const [userTab, setUserTab] = useState("overview");
 
-  const [myOrders, setMyOrders] = useState([])
+  const [myOrders, setMyOrders] = useState([]);
+
+  const [productCount, setProductCount] = useState(0);
+
+  const [orderCount, setOrderCount] = useState(0);
 
   const toggleUserTab = (tab) => {
     setUserTab(tab);
   };
 
-  useEffect(() =>{
-    const getMyOrders = async () =>{
-        const {data} = await axios.get('/api/v1/myOrders')
-        console.log(data)
-        setMyOrders(data.result)
-    }
-    getMyOrders()
-  }, [])
+  const getTotalProductCount = (orders) => {
+    let count = 0;
+    orders.forEach((order) => {
+      order.orderItems.forEach((product) => {
+        count += product.productQty;
+      });
+    });
 
+    setProductCount(count);
+  };
+
+  useEffect(() => {
+    const getMyOrders = async () => {
+      const { data, error } = await axios.get("/api/v1/myOrders");
+      console.log(data);
+
+      setMyOrders(data.result);
+      setOrderCount(data.result.length);
+      getTotalProductCount(data.result);
+    };
+    if (user) {
+      getMyOrders();
+    }
+  }, [user]);
+  console.log(myOrders);
   return user ? (
     <div className="profile-main">
       <div className="profile-container">
-        <div className="profileBanner" style={{background: `url(${bg})`, backgroundRepeat: 'no-repeat', backgroundSize:'cover'}}></div>
+        <div
+          className="profileBanner"
+          style={{ background: `url(${bg})` }}
+        ></div>
         <div className="profile-info-main">
           <div className="avatar-container">
             <img src={defaultAvatar} alt="" srcset="" />
@@ -61,7 +88,9 @@ const Account = () => {
             </button>
             <button
               className={userTab === "order" ? "user-tab-active" : ""}
-              onClick={() => toggleUserTab("order")}
+              onClick={() => {
+                toggleUserTab("order");
+              }}
             >
               Orders
             </button>
@@ -81,10 +110,14 @@ const Account = () => {
           >
             <div className="user-details user-activity-card">
               <UserActivitySubCard
-                info={{ icon: productIcon, title: "Products", count: 15 }}
+                info={{
+                  icon: productIcon,
+                  title: "Products",
+                  count: productCount,
+                }}
               />
               <UserActivitySubCard
-                info={{ icon: orderIcon, title: "Orders", count: 5 }}
+                info={{ icon: orderIcon, title: "Orders", count: orderCount }}
               />
               <UserActivitySubCard
                 info={{ icon: reviewIcon, title: "Reviews", count: 1 }}
@@ -111,15 +144,11 @@ const Account = () => {
                 <span>Status</span>
                 <span>Action</span>
               </div>
-              {
-                myOrders && myOrders.length > 0 ? 
-                myOrders.map(order => (
-                  <UserOrderCard order={order} key={order._id}/>
-                ))
-                
-                : ''
-              }
-          
+              {myOrders && myOrders.length > 0
+                ? myOrders.map((order) => (
+                    <UserOrderCard order={order} key={order._id} />
+                  ))
+                : ""}
             </div>
           </div>
 

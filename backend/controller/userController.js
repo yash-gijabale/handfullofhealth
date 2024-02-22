@@ -14,7 +14,6 @@ exports.createUser = catchAsyncError(async (req, res, next) => {
         email,
         password,
         role,
-        avatar
     }
 
     const user = await User.create(userData)
@@ -22,7 +21,7 @@ exports.createUser = catchAsyncError(async (req, res, next) => {
         return next(new ErrorHandler('Something is wrong', 400))
     }
 
-    sentJwtToken(user, res)
+    await sentJwtToken(user, res)
 })
 
 
@@ -43,7 +42,7 @@ exports.login = catchAsyncError(async (req, res, next) => {
         return next(new ErrorHandler('Invalid email or password!', 400))
     }
 
-    sentJwtToken(user, res)
+    await sentJwtToken(user, res)
 })
 
 
@@ -61,6 +60,17 @@ exports.logout = catchAsyncError(async (req, res, next) => {
     })
 })
 
+exports.userDetails = catchAsyncError(async (req, res, next) => {
+    const userId = req.user._id
+    const profile = await User.findById({ _id: userId })
+    if (!profile) {
+        return next(new ErrorHandler('User not found !', 404))
+    }
+    res.status(200).json({
+        success: true,
+        result: profile
+    })
+})
 
 exports.deleteUser = catchAsyncError(async (req, res, next) => {
 
@@ -121,7 +131,7 @@ exports.addProductToWishList = catchAsyncError(async (req, res, next) => {
         name: product.name,
         image: product.images[0].secure_url ? product.images[0].secure_url : '',
         price: product.price
-    } 
+    }
 
     user.wishList.push(whishListItem)
 
@@ -136,12 +146,12 @@ exports.addProductToWishList = catchAsyncError(async (req, res, next) => {
 })
 
 
-exports.removeFromWishlist = catchAsyncError( async(req, res, next) =>{
+exports.removeFromWishlist = catchAsyncError(async (req, res, next) => {
     const productId = req.params.id;
 
     let wishList = req.user.wishList
 
-    wishList = wishList.filter(item =>{
+    wishList = wishList.filter(item => {
         return item.product != productId
     })
 
