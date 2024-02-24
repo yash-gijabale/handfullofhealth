@@ -8,7 +8,18 @@
 .order-id{
     width: 90%;
     height: auto;
+    display: flex ;
+    align-items: center;
     /* margin: auto; */
+    /* background-color: aliceblue; */
+    
+}
+
+.order-info{
+    gap: 1rem;
+    width: 96%;
+    display: flex;
+    align-items: center;
 
 }
 
@@ -108,4 +119,26 @@
 .order-product-card td img{
     height: 100px;
     width: 75px ;
+}
+
+.mini-badge{
+    width: auto;
+    font-size: 12px;
+    padding: 4px;
+    border-radius: 5px;
+    height: 14px;
+    text-align: center;
+    display: grid;
+    place-items: center;
+    /* max-width: 100px; */
+}
+
+.mini-badge-primary{
+    background-color: rgb(65, 150, 223);
+    color: #fff;
+}
+
+.mini-badge-secondary{
+    background-color: rgb(188, 191, 193);
+    color: #1c1b1b;
 }

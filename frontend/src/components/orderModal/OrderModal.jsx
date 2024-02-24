@@ -1,13 +1,20 @@
 import React, { useState } from "react";
 import "./orderModal.css";
+import { FaDownload } from "react-icons/fa";
 
 const OrderModal = ({ order }) => {
   let srNo = 0;
-  let totalPrice = 0
+  let totalPrice = 0;
   return (
     <div className="orderModal-main">
       <div className="order-id">
-        <h4>OrderId: {order._id}</h4>
+        <div className="order-info">
+          <h4>OrderId: {order._id}</h4>
+          <span className="mini-badge mini-badge-primary">proccessing</span>
+        </div>
+        <div className="order-btns">
+          <span className="mini-badge mini-badge-secondary"><FaDownload /></span>
+        </div>
       </div>
 
       <div className="order-address">
@@ -57,7 +64,7 @@ const OrderModal = ({ order }) => {
           <tbody>
             {order.orderItems.map((product) => {
               srNo += 1;
-              totalPrice += product.price * product.productQty
+              totalPrice += product.price * product.productQty;
               return (
                 <tr className="order-product-card" key={product._id}>
                   <td>{srNo}</td>
@@ -71,7 +78,6 @@ const OrderModal = ({ order }) => {
                 </tr>
               );
             })}
-
           </tbody>
         </table>
       </div>

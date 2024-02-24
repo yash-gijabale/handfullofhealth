@@ -13,12 +13,9 @@ import defaultAvatar from "../../images/avatar.webp";
 import UserOrderCard from "../../components/account/UserOrderCard";
 
 import axios from "axios";
-
+import UserSetting from "../../components/account/UseSetting";
 
 const Account = () => {
-
- 
-
   const { user } = useSelector((state) => state.user);
 
   const [userTab, setUserTab] = useState("overview");
@@ -152,15 +149,17 @@ const Account = () => {
             </div>
           </div>
 
-          <div
+          < div
             className={
               userTab === "setting"
                 ? "overview-panel user-tab-show"
                 : "overview-panel"
             }
           >
-            <div className="user-details user-activity-card"> Setting</div>
-            <div className="user-details user-activity-card"></div>
+            <div className="user-details user-order-card">
+              <UserSetting user={user} />
+            </div>
+            {/* <div className="user-details user-activity-card"></div> */}
           </div>
         </div>
       </div>
