@@ -253,6 +253,7 @@ const ProductDetails = () => {
                   />
                 </Typography>
                 <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                  
                   <div className="ratingForm">
                     <textarea
                       className="rating-comment"
