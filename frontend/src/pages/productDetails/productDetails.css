@@ -406,3 +406,45 @@
     margin-top: 1rem;
     width: 100%;
 }
+
+.ratingModal{
+    border-radius: 10px !important;
+    border: 0px !important;
+
+}
+.ratingForm{
+    width: 100%;
+}
+
+.rating-comment{
+    width: 100%;
+}
+
+.ratingForm button{
+    width: 50%;
+    background-color: var(--green);
+    font-size: 17px;
+    color: #eaeaea;
+    cursor: pointer;
+    transition: 0.2s all ease-in-out;
+    display: grid;
+    place-items: center;
+}
+
+.ratingForm button:hover{
+    background-color:#318647
+}
+
+.rating-comment{
+    width: 90%;
+    height: 100px;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 15px;
+    font-family: var(--inter);
+}
+
+.rating-comment::placeholder{
+    font-size: 15px;
+    font-family: var(--inter);
+}

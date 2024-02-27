@@ -9,7 +9,8 @@ import {
     ADD_TO_CARD,
     REMOVE_FROM_CARD,
     LOAD_CARD,
-    EMPTY_CART
+    EMPTY_CART,
+
 } from '../constant/productConstant'
 
 
@@ -87,5 +88,17 @@ export const addToCartReducer = (state = { cart: [] }, action) => {
         default:
             return state
     }
+}
+
+export const addReivewReducer = (state={review:[]}, action) =>{
+
+    // switch (action.type) {
+    //     case value:
+            
+    //         break;
+    
+    //     default:
+    //         break;
+    // }
 }
 

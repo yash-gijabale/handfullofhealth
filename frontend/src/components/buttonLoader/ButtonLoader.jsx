@@ -1,9 +1,9 @@
 import React from 'react'
 import './buttonLoader.css'
 
-const ButtonLoader = () => {
+const ButtonLoader = ({color}) => {
   return (
-    <div className='btn-loader'></div>
+    <div className={`btn-loader ${color}`}></div>
   )
 }
 

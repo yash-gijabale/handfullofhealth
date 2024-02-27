@@ -15,4 +15,9 @@ export const LOAD_CARD = 'LOAD_CARD'
 export const EMPTY_CART = 'EMPTY_CART'
 
 
+export const REVIEW_REQUEST = 'REVIEW_REQUEST'
+export const REVIEW_SUCCESS = 'REVIEW_SUCCESS'
+export const REVIEW_FAILS = 'REVIEW_FAILS'
+
+
 export const PRODUCT_PER_PAGE = 8

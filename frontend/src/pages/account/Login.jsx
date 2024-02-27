@@ -83,7 +83,7 @@ const Login = () => {
                             <input type='password' name='password' className='login-input' placeholder='Password' />
                         </div>
                         <div className='form-btn'>
-                            <button type='submit'>{loading ? <ButtonLoader /> : 'Login'}</button>
+                            <button type='submit'>{loading ? <ButtonLoader color={'dark'} /> : 'Login'}</button>
                             <button type='button' className='gotosignup' onClick={(e) => toggelForm(e, 'register')}>SignUp</button>
                         </div>
                     </form>
