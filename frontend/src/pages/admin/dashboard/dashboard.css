@@ -1,0 +1,143 @@
+
+:root{
+    --text_gray: #919eab
+}
+
+.dashborad_main{
+    width: 100vw;
+    height: auto ;
+    /* min-height: 100vh; */
+    background-color: rgb(22, 28, 36);
+    /* background-color: rgb(255, 255, 255); */
+    font-size: var(--inter);
+    display: flex;
+    overflow: hidden;
+}
+
+.dashborad_body{
+    width: 100%;
+    /* margin: ; */
+    /* background-color: aliceblue; */
+    padding-top: 3rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    height: auto;
+    overflow-y: auto;
+    padding-bottom: 2rem;
+    /* position: relative; */
+    /* left: 18%; */
+}
+
+.dashborad_body::-webkit-scrollbar {
+    width: 7px;
+}
+
+.dashborad_body::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 10px;
+}
+
+.dashborad_body::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgb(77, 76, 76);
+}
+.admin-main{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    /* padding-bottom: 5rem; */
+}
+
+.ads_main{
+    width: 100%;
+    height: 50%; 
+    display: flex;
+    gap: 2rem;  
+}
+
+.current_ad_main{
+    width: 65%;
+    height: 325px;
+    border-radius: 20px;
+    background:linear-gradient(160deg, #f2eff6, #d0b9f3) ;
+    display: flex;
+}
+
+.current_ad_main .img-box{
+    height: 100%;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.current_ad_main .img-box img{
+    width: 100%;
+}
+.current_ad_main .info_box{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content:center;
+    gap: 20px;
+    margin-left: 2rem;
+    /* background-color: #d0b9f3; */
+}
+
+.current_ad_main .info_box h4{
+    font-size: 30px;
+    width: 100%;
+    margin: 0;
+    color: #26173b;
+}
+
+.current_ad_main .info_box span{
+    font-size: 20px;
+    color: #573883;
+}
+
+.current_ad_main .info_box button{
+    width: auto;
+    padding: 0 1rem;
+    background-color: #7635DC;
+    color: #f2eff6;
+    font-weight: 600;
+    margin-top: 2rem;
+    cursor: pointer;
+    transition: 0.2s all ease-in-out;
+}
+
+.current_ad_main .info_box button:hover{
+    background-color: #511ba8;
+
+}
+
+
+.current_ad2_main{
+    width: 35%;
+    height: 325px;
+    border-radius: 20px;
+    background-color: rgb(33, 43, 54);
+}
+
+.analitic_card_main{
+    width: 100%;
+    height: auto;
+    /* background-color: #573883; */
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    /* gap: 1rem; */
+    justify-content: space-between;
+}
+
+.alert{
+    background-color: #4d0606a1 !important;
+    border: 1px solid red;
+}
+
+.success_card{
+    background-color: #064d08a1 !important;
+    border: 1px solid rgb(0, 255, 47);
+}

@@ -16,6 +16,8 @@ import Account from './pages/account/Account';
 import { loadUser } from './actions/userAction';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import Dashboard from './pages/admin/dashboard/Dashboard';
+import Products from './pages/admin/product/Products';
 
 
 function App() {
@@ -49,6 +51,8 @@ function App() {
       <Routes>
         <Route path='/login' element={<Login />} />
         <Route path='/checkout' element={<Checkout />} />
+        <Route path='/admin/dashboard' element={<Dashboard />} />
+        <Route path='/admin/products' element={<Products />} />
       </Routes>
     </div>
   );

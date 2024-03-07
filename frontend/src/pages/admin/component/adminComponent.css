@@ -1,0 +1,50 @@
+.analytic_card{
+    width: 32%;
+    height: 200px;
+    border-radius: 20px;
+    background-color: rgb(33, 43, 54);
+    display: flex;
+}
+
+.analytic_card .analytic_card_info{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 1.5rem;
+    /* align-items: center; */
+    /* background-color: aliceblue; */
+    justify-content: space-evenly;
+    font-family: var(--inter);
+}
+
+.analytic_card .analytic_card_info .title{
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+}
+
+.analytic_card .analytic_card_info .number{
+    font-size: 35px;
+    color: rgb(255, 255, 255);
+    font-weight: 800;
+}
+.analytic_card .analytic_card_info .sub_title{
+    font-size: 18px;
+    color: rgb(137, 134, 134);
+    font-weight: 500;
+}
+.analytic_card .analytic_card_info .sub_title b{
+    color: rgb(255, 255, 255);
+}
+
+.analytic_card .analytic_card_icon{
+    width: 40%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.analytic_card .analytic_card_icon img{
+    width: 70%;
+}
