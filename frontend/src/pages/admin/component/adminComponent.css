@@ -48,3 +48,74 @@
 .analytic_card .analytic_card_icon img{
     width: 70%;
 }
+
+.admin_loader_mmain{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: aliceblue; */
+}
+.admin_loader{
+    width: 50px;
+    height: 50px;
+    background-color: rgba(71, 80, 87, 0);
+    border: 5px solid rgb(130, 21, 203);
+    border-radius: 100px;
+    border-top-color: transparent;
+    animation: rotate 0.6s linear infinite;
+}
+
+@keyframes rotate {
+    0%{
+        transform: rotate(0);
+    }
+
+    100%{
+        transform: rotate(360deg);
+    }
+    
+}
+
+.page_title_main{
+    height: auto;
+    width: 50%;
+    font-size: 30px;
+    color: #fff;
+    /* background-color: #fff; */
+    margin-top: 0;
+    font-family: var(--inter);
+}
+.page_title_main h3{
+    margin: 0;
+}
+
+.admin_add_btn{
+    width: auto;
+    padding: 10px 1rem;
+    font-weight: 600;
+    font-family: var(--inter);
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.admin_add_dark{
+    background-color: #7635DC;
+    color: #fff;
+    transition: 0.4s all ease-in-out;
+
+}
+.admin_add_dark:hover{
+    background-color: #6023c2;
+}
+
+.admin_add_light{
+    background-color: #ffffff;
+    color: #000000;
+    transition: 0.4s all ease-in-out;
+
+}
+.admin_add_light:hover{
+    background-color: #e3e3e4;
+}

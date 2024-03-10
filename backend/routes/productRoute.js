@@ -15,7 +15,8 @@ const {
     deleteCollection,
     categoryWiseProduct,
     productWithCollection,
-    collectionWiseProduct} = require('../controller/productController');
+    collectionWiseProduct,
+    getAllProductsAdmin} = require('../controller/productController');
 const isAuthenticate = require('../middleware/isAuthenticate');
 const checkRole = require('../middleware/checkRole');
 
@@ -26,6 +27,7 @@ router.route('/newProduct').post(createProduct)
 router.route('/products').get(getAllProducts)
 router.route('/product/:id').get(productDetails).delete(isAuthenticate, deleteProduct)
 router.route('/addReview').post(isAuthenticate, addReview)
+router.route('/admin/allProducts').get(isAuthenticate, checkRole('admin'), getAllProductsAdmin)
 // router.route('/deteleProduct/:id').delete(isAuthenticate, deleteProduct)
 
 //CATEGORY ROUTES

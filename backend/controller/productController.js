@@ -356,4 +356,19 @@ exports.collectionWiseProduct = catchAsyncError(async (req, res, next) => {
             products
         }
     })
-}) 
+})
+
+
+exports.getAllProductsAdmin = catchAsyncError(async(req, res, next) =>{
+
+    const products = await Product.find({})
+    const outOfStock = await Product.find({stock: 0})
+
+    res.status(200).json({
+        success: true,
+        result: {
+            products,
+            outOfStock
+        }
+    })
+})

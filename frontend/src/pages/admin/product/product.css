@@ -1,0 +1,150 @@
+.product_name_cell{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.product_name_cell img{
+    width: 70px;
+    border-radius: 10px;
+}
+
+.data_table_main{
+    background-color: rgb(54, 54, 65) !important;
+    border: 1px solid rgb(91, 89, 89);
+    height: 80vh;
+}
+
+.data_table{
+    background-color: rgb(35, 35, 43) !important;
+    color: aliceblue !important;
+    font-size: 15px !important;
+    font-weight: 600;
+    height: 50px;
+    border-bottom-color: rgb(69, 68, 68) !important ;
+}
+
+.css-41abqd-MuiTableContainer-root{
+    min-height: 500px !important;
+}
+.css-jtlhu6-MuiTablePagination-root{
+    color: #fff !important;
+}
+
+
+.data_row td{
+    border-color: rgb(69, 68, 68) !important;
+    color: aliceblue !important;
+    border: 0.5px solid rgb(69, 68, 68) !important;
+
+}
+
+.data_table_container::-webkit-scrollbar {
+    width: 7px;
+}
+
+.data_table_container::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 10px;
+}
+
+.data_table_container::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgb(77, 76, 76);
+}
+
+.css-1ft3qfy-MuiPaper-root{
+    margin-top: 5px !important;
+}
+
+.d-flex{
+    display: flex;
+}
+.j-between{
+    justify-content: space-between;
+}
+.admin_main_card{
+    height: auto;
+    padding: 10px;
+    background-color: #2b2a2a;
+    margin-top: 2rem;
+    width: 100%;
+    border-radius: 5px;
+
+}
+.admin_card_header{
+    height: auto;
+    width: 100%;
+    min-height: 50px;
+    /* background-color: aqua; */
+    margin: 0;
+}
+.admin_card_menubar .admin_card_button{
+    width: 50%;
+    height: 100%;
+}
+
+.admin_card_menubar{
+    gap: 10px;
+    align-items: center;
+}
+.admin_card_menu{
+    padding: 7px 10px;
+    border-radius: 4px;
+    height:25px;
+    padding-bottom: 0;
+    text-align: center;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
+.admin_card_menu:hover{
+    background-color: #444343;
+
+}
+
+.admin_card_menu_active{
+    background-color: #444343;
+}
+
+.card_menu_badge{
+    height:auto;
+    width: auto;
+    background-color: rgba(130, 130, 130, 0.556);
+    padding: 2px 5px;
+    border-radius: 5px;
+    margin-left: 3px;
+}
+
+.card_menu_badge_success{
+    background-color: rgba(51, 255, 0, 0.556);
+}
+
+.card_menu_badge_danger{
+    background-color: rgba(255, 0, 0, 0.556);
+
+}
+
+.admin_delete_btn{
+    width: auto;
+    padding: 5px 10px;
+    background-color: rgba(248, 95, 49, 0.422);
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-family: var(--inter);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+}
+.admin_delete_btn:hover{
+    background-color: rgba(191, 54, 12, 0.422);
+
+}
+.admin_delete_btn .icon{
+    font-size: 25px;
+}
